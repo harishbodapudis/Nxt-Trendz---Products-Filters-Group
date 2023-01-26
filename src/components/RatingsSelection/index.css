@@ -1,0 +1,26 @@
+.rating-heading {
+  font-weight: bold;
+}
+.rating-box {
+  margin: 0px;
+  padding: 0px;
+}
+.rating-name {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.rating-img {
+  height: 30px;
+  width: 180px;
+  margin-right: 5px;
+}
+.rating-btn {
+  background-color: transparent;
+  border: 0px;
+  cursor: pointer;
+}
+.ratings-item-active {
+  color: #0967d2;
+}

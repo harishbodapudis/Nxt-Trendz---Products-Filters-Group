@@ -5,6 +5,36 @@
   margin-top: 24px;
   flex-wrap: wrap;
 }
+.header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.input-field {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid black;
+  padding: 5px 8px;
+  background-color: #f1f5f9;
+  border-radius: 8px;
+  border: 0px;
+}
+
+.input-box {
+  margin-top: 24px;
+  width: 20%;
+  border: 0px;
+}
+
+.search-box {
+  border: 0px;
+  background-color: #f1f5f9;
+}
 
 @media screen and (min-width: 768px) {
   .products-header {

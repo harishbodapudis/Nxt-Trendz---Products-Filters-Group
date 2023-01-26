@@ -1,0 +1,16 @@
+.category-name {
+  list-style-type: none;
+}
+.category-item {
+  color: #64748b;
+  cursor: pointer;
+  background-color: transparent;
+  border: 0px;
+}
+.category-heading {
+  font-weight: bold;
+}
+
+.category-item-active {
+  color: #0967d2;
+}
