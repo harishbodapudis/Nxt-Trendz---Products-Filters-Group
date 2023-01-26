@@ -123,63 +123,16 @@ class AllProductsSection extends Component {
     }
   }
 
-  resetState = () => {
-    this.setState(
-      {
-        searchTitle: '',
-        categorySelectedId: '',
-        ratingId: '',
-      },
-      this.getProducts,
-    )
-  }
-
   changeSortby = activeOptionId => {
     this.setState({activeOptionId}, this.getProducts)
   }
 
-  renderProducts = () => {
-    const {status} = this.state
-
-    switch (status) {
-      case 'Success':
-        return this.renderProductsList()
-      case 'Failure':
-        return this.failurePage()
-      default:
-        return this.renderLoader()
-    }
+  updateSearchTitle = value => {
+    this.setState({searchTitle: value})
   }
 
-  renderProductsList = () => {
-    const {productsList} = this.state
-
-    // TODO: Add No Products View
-    return (
-      <div className="all-products-container">
-        {productsList.length > 0 ? (
-          <>
-            <ul className="products-list">
-              {productsList.map(product => (
-                <ProductCard productData={product} key={product.id} />
-              ))}
-            </ul>
-          </>
-        ) : (
-          <>
-            <center className="center-data">
-              <img
-                src="https://assets.ccbp.in/frontend/react-js/nxt-trendz/nxt-trendz-no-products-view.png"
-                alt="no products"
-                className="no-products"
-              />
-              <h1>No Products Found</h1>
-              <p>We could not find any products. Try other filters.</p>
-            </center>
-          </>
-        )}
-      </div>
-    )
+  submitSearchTitle = async () => {
+    this.getProducts()
   }
 
   categorySelected = async id => {
@@ -225,14 +178,6 @@ class AllProductsSection extends Component {
     } else {
       this.setState({status: 'Failure', isLoading: false})
     }
-  }
-
-  updateSearchTitle = value => {
-    this.setState({searchTitle: value})
-  }
-
-  submitSearchTitle = async () => {
-    this.getProducts()
   }
 
   ratingSelected = async id => {
@@ -283,11 +228,66 @@ class AllProductsSection extends Component {
     }
   }
 
+  resetState = () => {
+    this.setState(
+      {
+        searchTitle: '',
+        categorySelectedId: '',
+        ratingId: '',
+      },
+      this.getProducts,
+    )
+  }
+
+  renderProductsList = () => {
+    const {productsList} = this.state
+
+    // TODO: Add No Products View
+    return (
+      <div className="all-products-container">
+        {productsList.length > 0 ? (
+          <>
+            <ul className="products-list">
+              {productsList.map(product => (
+                <ProductCard productData={product} key={product.id} />
+              ))}
+            </ul>
+          </>
+        ) : (
+          <>
+            <center className="center-data">
+              <img
+                src="https://assets.ccbp.in/frontend/react-js/nxt-trendz/nxt-trendz-no-products-view.png"
+                alt="no products"
+                className="no-products"
+              />
+              <h1>No Products Found</h1>
+              <p>We could not find any products. Try other filters.</p>
+            </center>
+          </>
+        )}
+      </div>
+    )
+  }
+
   renderLoader = () => (
     <div className="products-loader-container">
       <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
     </div>
   )
+
+  renderProducts = () => {
+    const {status} = this.state
+
+    switch (status) {
+      case 'Success':
+        return this.renderProductsList()
+      case 'Failure':
+        return this.failurePage()
+      default:
+        return this.renderLoader()
+    }
+  }
 
   // TODO: Add failure view
   failurePage = () => (
